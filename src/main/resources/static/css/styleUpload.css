@@ -1,0 +1,55 @@
+/* General */
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Contenedor central */
+.container {
+    margin-top: 80px;
+    max-width: 500px;
+}
+
+/* Tarjeta */
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Título */
+.card-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #0d6efd;
+}
+
+/* Input file */
+.form-control {
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* Botón */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    transform: translateY(-2px);
+}

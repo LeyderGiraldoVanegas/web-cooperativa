@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" th:href="@{/css/styleError.css}">
+
+</head>
+<body>
+<div class="container">
+    <!-- Título de error -->
+    <h2>Error</h2>
+
+    <!-- Mensaje dinámico enviado desde el controlador -->
+    <p th:text="${error}">Mensaje de error aquí</p>
+
+    <!-- Mensaje informativo adicional -->
+    <p>Por favor contacte al administrador si el problema persiste.</p>
+
+    <!-- Botón para regresar al inicio -->
+    <a href="/home">Volver al inicio</a>
+</div>
+</body>
+</html>

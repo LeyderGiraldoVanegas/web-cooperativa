@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Subir archivo CSV</title>
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" th:href="@{/css/styleUpload.css}">
+    <!-- Bootstrap 5 para estilos rápidos y responsivos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-4">
+
+        <!-- ===== Botón para crear nuevo cliente ===== -->
+        <div class="mb-3">
+            <a href="/cliente/nuevo" class="btn btn-success">Nuevo Cliente</a>
+        </div>
+
+        <!-- ===== Tabla de clientes ===== -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title mb-4">Clientes</h2>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Iterar sobre la lista de clientes -->
+                        <tr th:each="cliente : ${clientes}">
+                            <td th:text="${cliente.id}"></td>
+                            <td th:text="${cliente.firstname}"></td>
+                            <td>
+                                <!-- Botones de acción -->
+                                <a th:href="@{/cliente/detalle/{id}(id=${cliente.id})}"
+                                    class="btn btn-sm btn-info">Ver</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <!-- Formulario para subir CSV -->
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title mb-4">Subir archivo CSV</h2>
+                <form method="POST" enctype="multipart/form-data" action="/procesar-csv">
+                    <div class="mb-3">
+                        <input type="file" class="form-control" name="file" accept=".csv" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subir</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

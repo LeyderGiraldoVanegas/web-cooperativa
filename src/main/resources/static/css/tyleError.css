@@ -1,0 +1,46 @@
+
+/* Estilos generales del body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Contenedor central para el mensaje de error */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Título del mensaje de error */
+h2 {
+    color: #dc3545; /* Rojo para destacar error */
+}
+
+/* Estilo de los párrafos de texto */
+p {
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Estilo de los enlaces (botón) */
+a {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover sobre el enlace */
+a:hover {
+    background-color: #0056b3;
+}

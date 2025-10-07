@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Cliente</title>
+    <link rel="stylesheet" href="/css/styleDetalleCliente.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+
+</head>
+
+<body>
+
+    <!-- Botón para Regresar -->
+    <div class="mb-3">
+        <a href="/home" class="btn btn-success">Regresar</a>
+    </div>
+
+
+<div class="container">
+    <h1>Detalle del Cliente</h1>
+
+    <div id="detalleCliente"></div>
+
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const clienteJson = /*[[${clienteJson}]]*/ '{}';
+    const cliente = JSON.parse(clienteJson);
+
+    const contenedor = document.getElementById('detalleCliente');
+
+    // Información General
+    let generalHtml = `
+    <div class="card section">
+        <h2>Información General</h2>
+        <div class="info">
+            <p><strong>ID:</strong> ${cliente.id}</p>
+            <p><strong>Número de cuenta:</strong> ${cliente.accountNo}</p>
+            <p><strong>Nombre:</strong> ${cliente.firstname} ${cliente.lastname}</p>
+            <p><strong>Display Name:</strong> ${cliente.displayName}</p>
+            <p><strong>Estado:</strong> ${cliente.status?.value}</p>
+            <p><strong>Activo:</strong> ${cliente.active}</p>
+            <p><strong>Oficina:</strong> ${cliente.officeName} (ID ${cliente.officeId})</p>
+            <p><strong>Producto de ahorro asociado:</strong> ${cliente.savingsProductName}</p>
+            <p><strong>Es personal del staff:</strong> ${cliente.isStaff}</p>
+        </div>
+    </div>
+    `;
+
+    // Fechas importantes
+    let timeline = cliente.timeline || {};
+    function formatFecha(fechaArr) {
+        if(!fechaArr) return '';
+        return fechaArr.join('-');
+    }
+
+    let fechasHtml = `
+    <div class="card section">
+        <h2>Fechas Importantes</h2>
+        <div class="info">
+            <p><strong>Creado / Enviado:</strong> ${formatFecha(timeline.submittedOnDate)}</p>
+            <p><strong>Activado:</strong> ${formatFecha(timeline.activatedOnDate)} por ${timeline.activatedByUsername} (${timeline.activatedByFirstname} ${timeline.activatedByLastname})</p>
+            <p><strong>Cerrado:</strong> ${formatFecha(timeline.closedOnDate)} por ${timeline.closedByUsername} (${timeline.closedByFirstname} ${timeline.closedByLastname})</p>
+        </div>
+    </div>
+    `;
+
+    // Información Legal y Clasificación
+    let legalHtml = `
+    <div class="card section">
+        <h2>Información Legal y Clasificación</h2>
+        <div class="info">
+            <p><strong>Forma Legal:</strong> ${cliente.legalForm?.value}</p>
+            <p><strong>Colaterales:</strong> ${cliente.clientCollateralManagements?.length || 'Ninguno'}</p>
+            <p><strong>Grupos asociados:</strong> ${cliente.groups?.length || 'Ninguno'}</p>
+        </div>
+    </div>
+    `;
+
+    contenedor.innerHTML = generalHtml + fechasHtml + legalHtml;
+    /*]]>*/
+</script>
+
+</body>
+</html>
